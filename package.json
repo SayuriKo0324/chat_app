@@ -65,6 +65,7 @@
     "reveal.js": "3.2.0",
     "socket.io-client": "^1.4.5",
     "superagent": "^1.6.1",
+    "utf-8-validate": "^5.0.2",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "3.7.0",
     "zeroclipboard": "2.2.0"

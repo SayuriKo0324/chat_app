@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.8'
-gem 'sqlite3'
+gem 'sqlite3', '~>1.3.6'
 gem 'haml-rails'
 gem 'erb2haml'
 gem "browserify-rails"
@@ -28,4 +28,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
