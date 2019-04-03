@@ -5,7 +5,7 @@
 // そこから定数であるGET_MESSAGESなどを呼び出しているため
 import Dispatcher from '../dispatcher'  // ?
 import BaseStore from '../base/store'  // ?
-// import UserStore from '../stores/user' // ユーザー機能入れてから
+import UserStore from '../stores/user' // ユーザー機能入れてからstores/
 import {ActionTypes} from '../constants/app'
 
 // ゲッター・セッター
@@ -76,39 +76,47 @@ import {ActionTypes} from '../constants/app'
   // },
 // }
 
-// var openChatID = parseInt(Object.keys(messages)[0], 10)// ?
-
-class ChatStore extends BaseStore {
-  // getOpenChatUserID() {
-    // return openChatID  // getメソッドとsetメソッドに変える
-  // }
-  // getChatByUserID(id) {  //
-    // return messages[id]  //
-  // }
-  // getAllChats() { //
-    // return messages  //
-  // }
-  getChat() {
-    if (!this.get('chatJson')) this.setChat([])
-    return this.get('chatJson')
-  }
-  setChat(array) {
-    this.set('chatJson', array)
-  }
- }
-
+// これをどうすればいいか
+var openChatID = parseInt(Object.keys(messages)[0], 10)// ??
+// 必要かどうかリスナーなど
+class ChatStore extends BaseStore { // class ChatStore extends BaseStore
+    addChangeListener(callback) {
+      this.on('change', callback)
+    }
+    removeChangeListener(callback) {
+      this.off('change', callback)
+    }
+    getOpenChatUserID() {
+      return openChatID
+    }
+    getChatByUserID(id) { // いらない。。。？
+      return messages[id]  //
+    }
+    getAllChats() { // いらない。。。？
+      return messages  // 上のmessagesの代わり？
+    }
+    getMessages() {
+      if (!this.get('messagesJson')) this.setMessages([])
+      return this.get('messagesJson')
+    }
+    setMessages(array) {
+      this.set('messagesJson', array)
+    }
+}
 const MessagesStore = new ChatStore()
+// const Messages = new MessagesStore()
 
-MessagesStore.dispatchToken = Dispatcher.register(payload => {
+MessagesStore.dispatchToken = Dispatcher.register(payload => { // MessagesStore.Dispatcher?
   const action = payload.action
   // payloadはメッセージデータとしてオブジェクトを用意し、
   // キーとしてユーザID、そして値にはユーザに関する様々なデータを入れています。
-
   switch (action.type) {
-    // case ActionTypes.UPDATE_OPEN_CHAT_ID:
-      // openChatID = payload.action.userID
-      // MessagesStore.emitChange()
-      // break
+    // これがいるのかわからない
+    case ActionTypes.UPDATE_OPEN_CHAT_ID:
+      openChatID = payload.action.userID
+      MessagesStore[openChatID].lastAccess.currentUser = +new Date() // 追記
+      MessagesStore.emitChange() // MessagesStore.emitChange?
+      break
 
     // case ActionTypes.SEND_MESSAGE:  // ??ユーザーモデル入れてからここを参考に下のcaseを変える?
     // const userID = action.userID //
@@ -117,20 +125,25 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => {
         // timestamp: action.timestamp,
         // from: UserStore.user.id // これを下のどこかにどうにかしていれる？
       // })
+      // messages[userID].lastAccess.currentUser = +new Date() // 追記
       // MessagesStore.emitChange()
       // break
 
     case ActionTypes.GET_MESSAGES: // 上のapi通信で使用したgetHogeアクションを受け取っているとします。
-      MessagesStore.setChat(action.json) // getHogeで取得したjsonをセッターを利用して保存しています。
+      MessagesStore.setMessages(action.json) // getHogeで取得したjsonをセッターを利用して保存しています。
       MessagesStore.emitChange()
       break
 
+// この下のいるのかわからないpushついて多分いる
     case ActionTypes.SEND_MESSAGE:
       const userID = action.userID  // たぶん
-      const messages = MessagesStore.getChat() // userに関すること
+      const messages = MessagesStore.getMessages() // ?userに関すること
       messages[userID].push( //
-        action.json.message
+        content: action.json.message,
+        timestamp: action.timestamp,
+        from: UserStore.user.id
         )
+      messages[userID].lastAccess.currentUser = +new Date() // 追記
       MessagesStore.emitChange()
       break
   }

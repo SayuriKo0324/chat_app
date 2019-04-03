@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.8'
 gem 'sqlite3', '~>1.3.6'
+gem 'devise'
 gem 'haml-rails'
 gem 'erb2haml'
 gem "browserify-rails"

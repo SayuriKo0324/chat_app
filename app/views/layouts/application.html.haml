@@ -1,11 +1,39 @@
-!!! 5
+!!!
 %html
   %head
-    %title flux_tutorial
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    %link{ href: '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel: 'stylesheet' }/
-    = javascript_include_tag 'application'
-    = javascript_include_tag '/assets/javascripts/boot.js'
-    = csrf_meta_tags
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ChatApp
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{"data-turbolinks-track" => "true", :href => "/assets/application-bf54ebb1a0ed0d39b725f679a002e7fa6818e0371b833435dd39c3b88b94462e.css", :media => "all", :rel => "stylesheet"}/
+    %script{:src => "/assets/application-3c5298627b0e1102e160cc917d5166b6ef10a4daf6863e9baccfbc5fbe0459b6.js"}
+    %script{:src => "/assets/javascripts/boot.js"}
+    %meta{:content => "authenticity_token", :name => "csrf-param"}/
+    %meta{:content => "wCH8NMxXhA9l/5DqBdZRRL0kINFbYY46dabNbzkx9g9wRhCdmvNjbeuc92KG5ciwOQPgDLlDUG9LPCdLpRcXhg==", :name => "csrf-token"}/
   %body
-    = yield
+    %header.header
+      .header-left
+        .header-logo
+          %a.header-logo-link{"data-no-turbolink" => "true", :href => "/"} ChatApp
+      .header-right
+        %ul.nav.nav-tabs
+          %li.search-user-btn{:role => "presentation"}
+            %a{"data-no-turbolink" => "true", :href => "/users/search"} ユーザーを探す
+          %li.dropdown{:role => "presentation"}
+            %div{"aria-expanded" => "false", "data-toggle" => "dropdown", :role => "button"}
+              \\{@current_user.name)
+              %span.caret
+            %ul.dropdown-menu.user-menu-box{:role => "menu"}
+              %li.user-menu-list{:role => "presentation"}
+                %a{:href => "/users/:id"} マイページ
+              %li.user-menu-list{:role => "presentation"}
+                %a{"data-method" => "delete", :href => "/users/sign_out", :rel => "nofollow"} ログアウト
+    .alert.alert-success.notice-bar.fade.in
+      %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"}
+        ×
+      ログインしました
+    .alert.alert-success.notice-bar.fade.in
+      %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"}
+        ×
+      ChatAppへようこそ！早速、ユーザーを探してチャットを始めよう！
+    #react-main

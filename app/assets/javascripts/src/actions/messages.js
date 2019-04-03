@@ -5,12 +5,12 @@ import Dispatcher from '../dispatcher'
 import {ActionTypes, APIEndpoints, CSRFToken} from '../constants/app'
 
 export default {
-  // changeOpenChat(newUserID) {
-    // Dispatcher.handleViewAction({
-      // type: ActionTypes.UPDATE_OPEN_CHAT_ID, // 変更箇所
-      // userID: newUserID,
-    // })
-  // },
+  changeOpenChat(newUserID) {
+    Dispatcher.handleViewAction({
+      type: ActionTypes.UPDATE_OPEN_CHAT_ID, // 変更箇所
+      userID: newUserID,
+    })
+  },
   // 追記
   // sendMessage(userID, message) { // sendMessageの名前を変えるなら、replayBox.jsの
     // MessagesAction.sendMessage->MessageAction.postMessageにかえる★
@@ -55,7 +55,8 @@ export default {
           const json = JSON.parse(res.text)
           Dispatcher.handleServerAction({
             type: ActionTypes.SEND_MESSAGE,
-            // userId,  <-紐付けた後？
+            // userId,
+            // <-紐付けた後？
             json,
           })
         } else {

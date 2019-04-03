@@ -4,8 +4,8 @@ class CreateMessages < ActiveRecord::Migration
       t.text :content
       t.references :user, index: true, foreign_key: true
 
-      t.timestamps null: false # nullでいいの？
+      t.timestamps null: false 
     end
-    # add_index :messages, [:user_id, :created_at] # いる？
+    add_index :messages, [:user_id, :created_at]
   end
 end
