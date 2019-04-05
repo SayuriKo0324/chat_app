@@ -6,20 +6,20 @@ class Users::SessionsController < Devise::SessionsController
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   # GET /resource/sign_in
   def new
-    # super
-    @user = User.find_by(id: params[:id])
+    super
+    # @user = User.find_by(id: params[:id])
   end
 
   # POST /resource/sign_in
   def create
-   # super
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+   super
+    # user = User.find_by(email: params[:session][:email].downcase)
+    # if user && user.authenticate(params[:session][:password])
    # ユーザーログイン後にユーザー情報のページにリダイレクトする
-    else
-     flash.now[:danger] = 'メールアドレスまたはパスワードが間違っています'
-     render 'new'
-    end
+    # else
+     # flash.now[:danger] = 'メールアドレスまたはパスワードが間違っています'
+     # render 'new'
+    # end
   end
 
   # DELETE /resource/sign_out

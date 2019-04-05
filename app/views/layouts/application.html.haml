@@ -1,16 +1,20 @@
 !!!
 %html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Workspace
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+%head
+   %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+   %title ChatApp
+   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+   = javascript_include_tag 'application', 'data-turbolinks-track' => true
+   = csrf_meta_tags
+   /[if lt IE 9]
+   <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+   </script>
+
 %body
    %header.header
    .header-left
    .header-logo
-   %a.header-logo-link{"data-no-turbolink" => "true", :href => root_path} ChatApp
+   %a.header-logo-link{"data-no-turbolink" => "true", :href => "/"} ChatApp
    .header-right
    %ul.nav.nav-tabs
    %li.search-user-btn{:role => "presentation"}
@@ -28,3 +32,16 @@
    %p.alert= alert
    = yield
    #react-main
+   .app{"data-reactid" => ".0"}
+   .user-list{"data-reactid" => ".0.0"}
+   %ul.user-list__list{"data-reactid" => ".0.0.0"}
+   .message-box{"data-reactid" => ".0.1"}
+   %ul.message-box__list{"data-reactid" => ".0.1.0"}
+   .reply-box{"data-reactid" => ".0.1.1"}
+   %input.reply-box__input{"data-reactid" => ".0.1.1.0", :placeholder => "Type message to reply..", :value => ""}/
+   .reply-box__image{"data-reactid" => ".0.1.1.1"}
+   %input.image-select-btn{"data-reactid" => ".0.1.1.1.0", :type => "file"}/
+   %span.reply-box__tip{"data-reactid" => ".0.1.1.2"}
+   %span{"data-reactid" => ".0.1.1.2.0"} Press
+   %span.reply-box__tip__button{"data-reactid" => ".0.1.1.2.1"} Enter
+   %span{"data-reactid" => ".0.1.1.2.2"} to send
