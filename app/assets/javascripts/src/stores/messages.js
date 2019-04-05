@@ -5,11 +5,9 @@
 // そこから定数であるGET_MESSAGESなどを呼び出しているため
 import Dispatcher from '../dispatcher'  // ?
 import BaseStore from '../base/store'  // ?
-import UserStore from '../stores/user' // ユーザー機能入れてからstores/
+// import UserStore from '../stores/user' // ユーザー機能入れてからstores/
 import {ActionTypes} from '../constants/app'
-
 // ゲッター・セッター
-
 // const messages = {
   // 2: {
     // user: {
@@ -76,10 +74,11 @@ import {ActionTypes} from '../constants/app'
   // },
 // }
 
-// これをどうすればいいか
-var openChatID = parseInt(Object.keys(messages)[0], 10)// ??
+// これをどうすればいいか(後で直す。relation辺りで)
+var openChatID = 1
+// parseInt(Object.keys(messages)[0], 10)// ??
 // 必要かどうかリスナーなど
-class ChatStore extends BaseStore { // class ChatStore extends BaseStore
+class ChatStore extends BaseStore {
     addChangeListener(callback) {
       this.on('change', callback)
     }
@@ -89,12 +88,12 @@ class ChatStore extends BaseStore { // class ChatStore extends BaseStore
     getOpenChatUserID() {
       return openChatID
     }
-    getChatByUserID(id) { // いらない。。。？
-      return messages[id]  //
-    }
-    getAllChats() { // いらない。。。？
-      return messages  // 上のmessagesの代わり？
-    }
+    // getChatByUserID(id) { // いらない。。。？
+      // return messages[id]  //
+    // }
+    // getAllChats() { // いらない。。。？
+      // return messages  // 上のmessagesの代わり？
+    // }
     getMessages() {
       if (!this.get('messagesJson')) this.setMessages([])
       return this.get('messagesJson')
@@ -139,9 +138,9 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => { // MessagesStore.
       const userID = action.userID  // たぶん
       const messages = MessagesStore.getMessages() // ?userに関すること
       messages[userID].push( //
-        content: action.json.message,
-        timestamp: action.timestamp,
-        from: UserStore.user.id
+        action.json.message
+        // timestamp: action.timestamp,
+        // from: UserStore.user.id
         )
       messages[userID].lastAccess.currentUser = +new Date() // 追記
       MessagesStore.emitChange()

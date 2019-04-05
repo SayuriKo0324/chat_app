@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  has_many :microposts, dependent: :destroy #
+  has_many :messages, dependent: :destroy #
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :timeoutable # :omniauthable # :lockable
+         :confirmable, :timeoutable, :lockable # :omniauthable  
   before_save :downcase_email
   # ?before_create :create_activation_digest
   validates :name,  presence: true, length: { maximum: 50 }
