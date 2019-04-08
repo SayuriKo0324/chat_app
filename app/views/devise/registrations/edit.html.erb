@@ -1,0 +1,27 @@
+<div class='edit_wrapper'>
+<h3 class='edit_user_title'>プロフィール編集</h3>
+<form class="edit_user" id="edit_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="ah1MobnJJChWCzyIxedtjt4j1SMy1/eDTUU7Xn/BF3QYinxqpvEiagy1zLHfUPWJ24r0oIg83bDE+rctpytNmA==" />
+<div class='form-group'>
+<input type="file" name="user[image]" id="user_image" />
+</div>
+<div class='form-group edit_form_group'>
+<input class="form-control" type="text" value=user[name] name="user[name]" id="user_name" />
+</div>
+<div class='form-group edit_form_group'>
+<input class="form-control" autofocus="autofocus" type="email" value=user[name] name="user[email]" id="user_email" />
+</div>
+<div class='form-group edit_form_group'>
+<input class="form-control" autocomplete="off" placeholder="現在のパスワード(更新する場合はこの項目を必ず入力してください。)" type="password" name="user[current_password]" id="user_current_password" />
+</div>
+<div class='form-group edit_form_group'>
+<input class="form-control" autocomplete="off" placeholder="新しいパスワード" type="password" name="user[password]" id="user_password" />
+</div>
+<div class='form-group edit_form_group'>
+<input class="form-control" autocomplete="off" placeholder="新しいパスワードの確認" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+</div>
+<div class='actions'>
+<input type="submit" name="commit" value="更新" class="btn btn-info update_btn" />
+</div>
+</form>
+<form class="button_to" method="post" action="/users"><input type="hidden" name="_method" value="delete" /><input class="btn btn-danger user_destroy_btn" data-confirm="本当に削除しますか？" type="submit" value="アカウント削除" /><input type="hidden" name="authenticity_token" value="RGd88LslsY5fxJKSrPTkwF1wldBJeIWJUO6PtOG0lUY28Ew7pB23zAV6Yqu2Q3zHWNm0U/OTr7rZUQPHOV7Pqg==" /></form>
+</div>

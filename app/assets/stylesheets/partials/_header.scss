@@ -1,38 +1,9 @@
 .header {
   height: 60px;
-  background: #2AADE5;
+  background: #f8f8f8;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 998;
-}
-
-a {
-  background-color: transparent;
-}
-
-.header-left {
-  float: left;
-  line-height: 50px;
-  padding-left: 30px;
-}
-
-.header-logo {
-  font-weight: bold;
-　font-size: 20px;
-}
-
-.header-logo-link {
-  color: #000;
-}
-
-.header-right {
-  float: right;
-  line-height: 50px;
-  padding-right: 30px;
-}
-
-.nav-tabs {
-  border-bottom: 1px solid #ddd;
 }
