@@ -1,0 +1,9 @@
+.user_profile
+  .user_profile_image
+    %img.user_profile_image_id{:alt => "Default image", :src => "/images/default_image.jpg"}/
+  .user_profile_name
+    = current_user.name
+  .user_profile_email
+    = current_user.email
+  .user_profile_edit_btn
+    %a.btn.btn-info{:href => "/users/edit"} プロフィール編集

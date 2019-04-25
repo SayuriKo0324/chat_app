@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.8'
+gem 'devise'
 gem 'sqlite3', '~>1.3.6'
 gem 'haml-rails'
 gem 'erb2haml'

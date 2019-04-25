@@ -80,10 +80,10 @@ var openChatID = parseInt(Object.keys(messages)[0], 10)// ?
 
 class ChatStore extends BaseStore {
   getOpenChatUserID() {
-    return openChatID  // getメソッドとsetメソッドに変える
+    return openChatID
   }
-  getChatByUserID(id) {  //
-    return messages[id]  //
+  getChatByUserID(id) {
+    return messages[id]
   }
   getAllChats() { //
     return messages
@@ -98,28 +98,27 @@ class ChatStore extends BaseStore {
  }
 
 const MessagesStore = new ChatStore()
-
 MessagesStore.dispatchToken = Dispatcher.register(payload => {
   const action = payload.action
   // payloadはメッセージデータとしてオブジェクトを用意し、
   // キーとしてユーザID、そして値にはユーザに関する様々なデータを入れています。
-
   switch (action.type) {
     case ActionTypes.UPDATE_OPEN_CHAT_ID:
-      openChatID = action.userID
+      openChatID = payload.action.userID
       messages[openChatID].lastAccess.currentUser = +new Date()
       MessagesStore.emitChange()
       break
 
-    case ActionTypes.SEND_MESSAGE:  // ??ユーザーモデル入れてからここを参考に下のcaseを変える?
-      const userID = action.userID //
-        messages[userID].messages.push({
-          contents: action.message,
-          timestamp: action.timestamp,
-          from: UserStore.user.id // これを下のどこかにどうにかしていれる？
-        })
-        MessagesStore.emitChange()
-        break
+    case ActionTypes.POST_MESSAGE:
+      const userId = action.json.user_id
+      const message = action.json.content
+      messages[userId].messages.push({
+        content: message,
+        timestamp: action.timestamp,
+        from: UserStore.user.id,
+      })
+      MessagesStore.emitChange()
+      break
 
     case ActionTypes.GET_MESSAGES: // 上のapi通信で使用したgetHogeアクションを受け取っているとします。
       MessagesStore.setChat(action.json) // getHogeで取得したjsonをセッターを利用して保存しています。

@@ -1,0 +1,20 @@
+<body>
+<div class='password-reset-wrapper'>
+<h2 class='password-reset-title'>パスワードをリセット</h2>
+<p>ご登録いただいたメールアドレスを入力してください。</p>
+<p>メールアドレス宛にパスワード変更ページのURLが記載されたメールを送信します。</p>
+<form class="new_user" id="new_user" action="/users/password" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="SXRnZ/vCFowARWdabJhYq8IvWO08gy9FZR1WGE5RpNLq1Jsxlt438P+HrVoU1xxF3nNKANqQECKpk0h+yCNSLw==" />
+<div class='form-group'>
+<input class="form-control password-reset-email" autofocus="autofocus" placeholder="メールアドレス" type="email" value="" name="user[email]" id="user_email" />
+</div>
+<div class='actions'>
+<input type="submit" name="commit" value="パスワードをリセット" class="btn btn-info password-reset-btn" />
+</div>
+</form>
+  <a href="/users/sign_in">ログイン</a><br />
+
+  <a href="/users/sign_up">新規登録の方はこちら</a><br />
+
+</div>
+
+</body>

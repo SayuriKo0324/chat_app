@@ -8,4 +8,6 @@
     = javascript_include_tag '/assets/javascripts/boot.js'
     = csrf_meta_tags
   %body
+    - if user_signed_in?
+      = render 'layouts/header'
     = yield
