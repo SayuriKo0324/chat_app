@@ -3,10 +3,6 @@ import Dispatcher from '../dispatcher'
 import {ActionTypes, APIEndpoints, CSRFToken} from '../constants/app'
 
 export default {
-<<<<<<< HEAD
-
-=======
->>>>>>> master
   changeOpenChat(newUserID) {
     Dispatcher.handleViewAction({
       type: ActionTypes.UPDATE_OPEN_CHAT_ID, // 変更箇所
@@ -54,13 +50,7 @@ export default {
         if (!error && res.status === 200) {
           const json = JSON.parse(res.text)
           Dispatcher.handleServerAction({
-<<<<<<< HEAD
-            type: ActionTypes.POST_MESSAGE,
-=======
             type: ActionTypes.SEND_MESSAGE,
-            // userId,
-            // <-紐付けた後？
->>>>>>> master
             json,
             timestamp: +new Date(),
           })
