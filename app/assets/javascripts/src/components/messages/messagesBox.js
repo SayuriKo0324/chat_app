@@ -17,11 +17,15 @@ class MessagesBox extends React.Component {
     return this.getStateFromStore()
   }
   getStateFromStore() {
+<<<<<<< HEAD
     return {
       messages: MessagesStore.getChat(),
       // ,
     }
     // return MessagesStore.getChatByUserID(MessagesStore.getOpenChatUserID())
+=======
+    return MessagesStore.getMessages// -> getしてきたものをgetChatByUserID(MessagesStore.getOpenChatUserID())
+>>>>>>> master
   }
   componentWillMount() {
     MessagesStore.onChange(this.onStoreChange.bind(this))

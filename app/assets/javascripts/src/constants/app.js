@@ -3,9 +3,12 @@ import keyMirror from 'keymirror'
 
 export const ActionTypes = keyMirror({
   UPDATE_OPEN_CHAT_ID: null,
-  GET_MESSAGES: null,
   SEND_MESSAGE: null,
+<<<<<<< HEAD
   POST_MESSAGE: null,
+=======
+  GET_MESSAGES: null, //
+>>>>>>> master
 })
 
 export function CSRFToken() {

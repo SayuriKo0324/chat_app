@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.8'
 gem 'devise'
 gem 'sqlite3', '~>1.3.6'
+gem 'devise'
 gem 'haml-rails'
+gem 'rails-i18n', '~> 4.0'
 gem 'erb2haml'
 gem "browserify-rails"
 gem 'sprockets-es6'
