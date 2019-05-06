@@ -9,3 +9,8 @@ const UserStore = {
 export default UserStore
 
 //
+// class UserStore extends BaseStore {
+//
+// }
+//
+// export default UserStore
