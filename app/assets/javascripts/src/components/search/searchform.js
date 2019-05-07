@@ -7,7 +7,6 @@ class Searchform extends React.Component {
   render() {
     return (
         <div className='searchform'>
-          <Header />
           <User />
         </div>
       )

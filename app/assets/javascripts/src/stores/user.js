@@ -1,3 +1,5 @@
+// import {ActionTypes} from '../constants/app'
+
 const UserStore = {
   user: {
     id: 1,
