@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     resources :messages
+    resources :users, :only => [:index]
   end
 
   resources :messages      # only[:create, :destroy] #

@@ -1,3 +1,5 @@
+// import {ActionTypes} from '../constants/app'
+
 const UserStore = {
   user: {
     id: 1,
@@ -9,3 +11,8 @@ const UserStore = {
 export default UserStore
 
 //
+// class UserStore extends BaseStore {
+//
+// }
+//
+// export default UserStore

@@ -1,16 +1,7 @@
 # frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
-<<<<<<< HEAD
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-
-=======
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-  before_action :authenticate_user,  {only: [:index, :show, :edit, :update]}
-  before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
->>>>>>> master
   # GET /resource/sign_up
   def new
      super
@@ -32,15 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # DELETE /resource
-<<<<<<< HEAD
   def destroy
      super
   end
-=======
-  # def destroy
-  #   super
-  # end
->>>>>>> master
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
