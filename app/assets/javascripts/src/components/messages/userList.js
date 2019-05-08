@@ -3,7 +3,7 @@ import _ from 'lodash'
 import classNames from 'classnames'
 import Utils from '../../utils'
 import MessagesStore from '../../stores/messages'
-import UserStore from '../../stores/user'
+// import UserStore from '../../stores/user'
 import MessagesAction from '../../actions/messages'
 
 class UserList extends React.Component {
@@ -46,6 +46,7 @@ class UserList extends React.Component {
   changeOpenChat(id) {
     MessagesAction.changeOpenChat(id)
   }
+
   render() {
     this.state.messageList.sort((a, b) => {
       if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
@@ -73,9 +74,9 @@ class UserList extends React.Component {
       }
 
       var isNewMessage = false
-      if (message.lastAccess.currentUser < message.lastMessage.timestamp) {
-        isNewMessage = message.lastMessage.from !== UserStore.user.id
-      }
+      // if (message.lastAccess.currentUser < message.lastMessage.timestamp) {
+      //   isNewMessage = message.lastMessage.from !== UserStore.user.id
+      // }
 
       const itemClasses = classNames({
         'user-list__item': true,
