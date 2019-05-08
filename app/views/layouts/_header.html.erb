@@ -1,26 +1,26 @@
 <header class='header'>
-<div class='header-left'>
-<div class='header-logo'>
-<a data-no-turbolink="true" class="header-logo-link" href="/">ChatApp</a>
-</div>
-</div>
-<div class='header-right'>
-<ul class='nav nav-tabs'>
-<li class='search-user-btn' role='presentation'><a data-no-turbolink="true" href="/users/search">ユーザーを探す</a></li>
-<li class='dropdown' role='presentation'>
-<div aria-expanded='false' data-toggle='dropdown' role='button'>
-<%= current_user.name %>
-<span class='caret'></span>
-</div>
-<ul class='dropdown-menu user-menu-box' role='menu'>
-<li class='user-menu-list' role='presentation'>
-<li class='user-menu-list' role='presentation'><%= link_to("マイページ", "/users/#{current_user.id}") %></li>
-</li>
-<li class='user-menu-list' role='presentation'>
-  <a rel="nofollow" data-method="delete" href="/users/sign_out">ログアウト</a>
-</li>
-</ul>
-</li>
-</ul>
-</div>
+  <div class='header-left'>
+    <div class='header-logo'>
+      <a data-no-turbolink="true" class="header-logo-link" href="/">ChatApp</a>
+    </div>
+  </div>
+  <div class='header-right'>
+    <ul class='nav nav-tabs'>
+      <li class='search-user-btn' role='presentation'><a data-no-turbolink="true" href="/users/search">ユーザーを探す</a></li>
+      <li class='dropdown' role='presentation'>
+        <div aria-expanded='false' data-toggle='dropdown' role='button'>
+          <%= current_user.name %>
+          <span class='caret'></span>
+        </div>
+        <ul class='dropdown-menu user-menu-box' role='menu'>
+          <li class='user-menu-list' role='presentation'>
+            <li class='user-menu-list' role='presentation'><%= link_to("マイページ", "/users/#{current_user.id}") %></li>
+          </li>
+          <li class='user-menu-list' role='presentation'>
+            <a rel="nofollow" data-method="delete" href="/users/sign_out">ログアウト</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </header>

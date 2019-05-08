@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :messages      # only[:create, :destroy] #
   root to: 'messages#index'
+  get '/users/search' => 'users#index'
 
   devise_for :users, :controllers => {
   :registrations => 'users/registrations',

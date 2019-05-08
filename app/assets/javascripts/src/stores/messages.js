@@ -3,9 +3,9 @@
 // メッセージにまつわるデータがdispatcherからきちんとメッセージストアに届くのは、
 // ActionTypesで定数管理を行い、
 // そこから定数であるGET_MESSAGESなどを呼び出しているため
-import Dispatcher from '../dispatcher'  // ?
-import BaseStore from '../base/store'  // ?
-import UserStore from '../stores/user' // ユーザー機能入れてからstores/
+import Dispatcher from '../dispatcher'
+import BaseStore from '../base/store'
+import UserStore from '../stores/user'
 import {ActionTypes} from '../constants/app'
 
 // ゲッター・セッター
@@ -76,9 +76,8 @@ const messages = {
   },
 }
 
-// これをどうすればいいか
 var openChatID = parseInt(Object.keys(messages)[0], 10)// ??
-// 必要かどうかリスナーなど
+
 class ChatStore extends BaseStore { // class ChatStore extends BaseStore
     addChangeListener(callback) {
       this.on('change', callback)
@@ -89,11 +88,11 @@ class ChatStore extends BaseStore { // class ChatStore extends BaseStore
     getOpenChatUserID() {
       return openChatID
     }
-    getChatByUserID(id) { // いらない。。。？
-      return messages[id]  //
+    getChatByUserID(id) {
+      return messages[id]
     }
-    getAllChats() { // いらない。。。？
-      return messages  // 上のmessagesの代わり？
+    getAllChats() {
+      return messages
     }
     getMessages() {
       if (!this.get('messagesJson')) this.setMessages([])
@@ -111,7 +110,6 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => { // MessagesStore.
   // payloadはメッセージデータとしてオブジェクトを用意し、
   // キーとしてユーザID、そして値にはユーザに関する様々なデータを入れています。
   switch (action.type) {
-    // これがいるのかわからない
     case ActionTypes.UPDATE_OPEN_CHAT_ID:
       openChatID = payload.action.userID
       MessagesStore[openChatID].lastAccess.currentUser = +new Date() // 追記
