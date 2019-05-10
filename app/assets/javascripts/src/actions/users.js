@@ -50,6 +50,7 @@ export default {
       .end((error, res) => {
         if (!error && res.status === 200) {
           const json = JSON.parse(res.text)
+          // console.log(json)
           Dispatcher.handleServerAction({
             type: 'postUser',
             json,
