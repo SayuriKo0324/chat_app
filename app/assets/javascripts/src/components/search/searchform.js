@@ -17,6 +17,7 @@
 
 import React from 'react'
 import User from './User'
+import UsersAction from '../../actions/users'
 
 export default class Searchform extends React.Component {
   constructor(props) {
@@ -29,13 +30,13 @@ export default class Searchform extends React.Component {
       searchString: '',
     }
   }
+
   handleChange(e) {
     this.setState({
       searchString: e.target.value,
     })
+    UsersAction.postUser(this.state.searchString)
   }
-
-
 
   render() {
     return (

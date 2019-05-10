@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     resources :messages
     resources :users, :only => [:index]
+    get '/users/search' => 'users#index'
+    post '/users/search' => 'users#index'
   end
 
   resources :messages      # only[:create, :destroy] #

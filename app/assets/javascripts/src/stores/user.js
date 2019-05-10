@@ -35,8 +35,17 @@ UserStore.dispatcherToken = Dispatcher.register(payload => {
       UserStore.setUsers(action.json)
       UserStore.emitChange()
       break
-    default:
-  }
-})
 
+  //   case 'postUser':
+  //     const users = UserStore.getUsers() // ?userに関すること
+  //     UserStore.setUsers({
+  //       name: action.json.name,
+  //     })
+  //     UserStore.emitChange()
+  //     break
+  //   default:
+  }
+
+  return true
+})
 export default UserStore
