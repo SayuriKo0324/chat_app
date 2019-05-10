@@ -20,8 +20,8 @@ export default class User extends React.Component {
   }
 
   getStateFromStore() {
-    return {user: UserStore.getUsers()}
-  }
+     return {users: UserStore.getUsers()}
+   }
 
   componentDidMount() {
     UserStore.onChange(this.onStoreChange.bind(this))
@@ -36,12 +36,12 @@ export default class User extends React.Component {
   }
 
   render() {
-    const user = this.state
-    const searchString = this.props
-    // console.log(this.state)
-    // console.log(this.props)
+    const {users} = this.state
+    const {searchString} = this.props
+    console.log(this.state)
+    console.log(this.props)
 
-    let allUsers = user
+    let allUsers = users
     const searchUser = searchString
     // const searchUser = searchString.trim().toLowerCase()
 
