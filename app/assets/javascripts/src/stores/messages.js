@@ -5,7 +5,7 @@
 // そこから定数であるGET_MESSAGESなどを呼び出しているため
 import Dispatcher from '../dispatcher'
 import BaseStore from '../base/store'
-import UserStore from '../stores/user'
+// import UserStore from '../stores/user'
 import {ActionTypes} from '../constants/app'
 
 // ゲッター・セッター
@@ -134,16 +134,15 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => { // MessagesStore.
 
 // この下のいるのかわからないpushついて多分いる
     case ActionTypes.SEND_MESSAGE:
-      const userID = action.userID  // たぶん
+      // const userID = action.userID  // たぶん
       const messages = MessagesStore.getMessages() // ?userに関すること
       const id = messages.length + 1
       messages.push({
         id: id,
         content: action.json.content,
-        user_id: 2,
-        from: 1,
+        to_user_id: action.json.to_user_id,
+        from_user_id: action.json.from_user_id,
         created_at: action.timestamp,
-
       })
       // messages[userID].lastAccess.currentUser = +new Date() // 追記
       MessagesStore.emitChange()
