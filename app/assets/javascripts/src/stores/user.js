@@ -26,21 +26,18 @@ const UserStore = new UsersStore()
 UserStore.dispatcherToken = Dispatcher.register(payload => {
   const action = payload.action
   switch (action.type) {
-    case 'loadUsers':
-      UserStore.setUsers(action.json)
-      UserStore.emitChange()
-      break
-
-    case 'loadSearchUsers':
-      UserStore.setUsers(action.json)
-      UserStore.emitChange()
-      break
+    // case 'loadUsers':
+    //   UserStore.setUsers(action.json)
+    //   UserStore.emitChange()
+    //   break
+    //
+    // case 'loadSearchUsers':
+    //   UserStore.setUsers(action.json)
+    //   UserStore.emitChange()
+    //   break
 
     case 'postUser':
-      const users = UserStore.getUsers()
-      users.push({
-        name: action.json.name,
-      })
+      UserStore.setUsers(action.json)
       UserStore.emitChange()
       break
     default:
@@ -48,4 +45,5 @@ UserStore.dispatcherToken = Dispatcher.register(payload => {
 
   return true
 })
+
 export default UserStore
