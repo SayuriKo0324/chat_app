@@ -41,16 +41,16 @@ export default {
     })
   },
 
-  postUser(user_name) {
+  postUser(name) {
     return new Promise((resolve, reject) => {
       request
       .post(`${APIEndpoints.USERS}/search`) // 後ほど説明します。
       .set('X-CSRF-Token', CSRFToken()) // 後ほど説明します。
-      .send({user_name: user_name}) // これによりサーバ側に送りたいデータを送ることが出来ます。
+      .send({name: name}) // これによりサーバ側に送りたいデータを送ることが出来ます。
       .end((error, res) => {
         if (!error && res.status === 200) {
           const json = JSON.parse(res.text)
-          // console.log(json)
+          console.log(json)
           Dispatcher.handleServerAction({
             type: 'postUser',
             json,

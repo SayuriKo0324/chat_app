@@ -57,10 +57,7 @@ export default class User extends React.Component {
             return (
               <div key={user.id}>
                 <li>
-                  <form action='/' method='get' >
-                  <input name='user_id' key={user.id} type='hidden' />
-                  <input value={user.name} />
-                  </form>
+                  {user.name}
                 </li>
               </div>
             )
