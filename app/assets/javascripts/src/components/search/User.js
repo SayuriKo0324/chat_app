@@ -56,9 +56,14 @@ export default class User extends React.Component {
           _.map(allUsers, (user) => {
             return (
               <div key={user.id}>
-                <li>
-                  {user.name}
-                </li>
+                <ul className='search_user_list'>
+                  <li className='search_user_list_item'>
+                    <li className='search_user_list_result'>
+                      <img className='search_user_list_result_image' src='/assets/images/default_image.jpg' />;
+                      {user.name}
+                      </li>
+                  </li>
+                </ul>
               </div>
             )
           })

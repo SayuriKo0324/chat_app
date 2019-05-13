@@ -50,21 +50,13 @@ export default class Searchform extends React.Component {
           <span className='google' style={{color: 'red'}}>p</span>
           <span className='google' style={{color: 'yellow'}}>p</span>
         </div>
-        <div className='searchform'>
-          <ul className='search_user_list'>
-            <li className='search_user_list_item'>
-              <div className='search_user_list_result'>
-                <img className='search_user_list_result_image' src='/assets/images/default_image.jpg' />;
-                <input type='text'
+        <input className='search_form'
+                 type='text'
                  value={ this.state.searchString }
                  onChange={this.handleChange.bind(this)}
                  placeholder='ユーザー名で検索しよう'
-                />
-                <User {...this.state} />
-              </div>
-            </li>
-          </ul>
-        </div>
+          />
+          <User {...this.state} />
       </div>
    )
   }
