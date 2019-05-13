@@ -40,12 +40,12 @@ export default {
   }, // 続く場合,がいる
 
 // postの場合
-  postMessage(userId, message) {
+  postMessage(toUserId, message) {
     return new Promise((resolve, reject) => {
       request
       .post(`${APIEndpoints.MESSAGES}`) // 後ほど説明します。
       .set('X-CSRF-Token', CSRFToken()) // 後ほど説明します。
-      .send({userId: userId, message: message}) // これによりサーバ側に送りたいデータを送ることが出来ます。
+      .send({toUserId: toUserId, message: message}) // これによりサーバ側に送りたいデータを送ることが出来ます。
       .end((error, res) => {
         if (!error && res.status === 200) {
           const json = JSON.parse(res.text)
