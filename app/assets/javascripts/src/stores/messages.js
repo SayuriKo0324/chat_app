@@ -94,7 +94,7 @@ class ChatStore extends BaseStore { // class ChatStore extends BaseStore
     getAllChats() {
       return messages
     }
-    getMessages() {
+    getMessages(userID) {
       if (!this.get('messagesJson')) this.setMessages([])
       return this.get('messagesJson')
     }
@@ -136,12 +136,16 @@ MessagesStore.dispatchToken = Dispatcher.register(payload => { // MessagesStore.
     case ActionTypes.SEND_MESSAGE:
       const userID = action.userID  // たぶん
       const messages = MessagesStore.getMessages() // ?userに関すること
-      messages[userID].push({ //
-        content: action.json.message,
-        timestamp: action.timestamp,
-        from: UserStore.user.id,
+      const id = messages.length + 1
+      messages.push({
+        id: id,
+        content: action.json.content,
+        user_id: 2,
+        from: 1,
+        created_at: action.timestamp,
+
       })
-      messages[userID].lastAccess.currentUser = +new Date() // 追記
+      // messages[userID].lastAccess.currentUser = +new Date() // 追記
       MessagesStore.emitChange()
       break
   }
