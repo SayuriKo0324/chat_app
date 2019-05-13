@@ -18,7 +18,7 @@ class MessagesBox extends React.Component {
   }
   getStateFromStore() {
     return {
-      messages: MessagesStore.getMessages(),
+      messages: MessagesStore.getMessages(MessagesStore.getOpenChatUserID()),
       // ,
     }
     // return MessagesStore.getChatByUserID(MessagesStore.getOpenChatUserID())

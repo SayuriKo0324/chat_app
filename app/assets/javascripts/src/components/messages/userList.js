@@ -46,7 +46,6 @@ class UserList extends React.Component {
   changeOpenChat(id) {
     MessagesAction.changeOpenChat(id)
   }
-
   render() {
     this.state.messageList.sort((a, b) => {
       if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
@@ -96,7 +95,7 @@ class UserList extends React.Component {
           </div>
           <div className='user-list__item__details'>
             <h4 className='user-list__item__name'>
-              { message.user.name }
+              { message.user.name } // 自分が申請現である友達リスト
               <abbr className='user-list__item__timestamp'>
                 { date }
               </abbr>

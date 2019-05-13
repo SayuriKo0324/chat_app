@@ -20,8 +20,8 @@ export default class User extends React.Component {
   }
 
   getStateFromStore() {
-     return {users: UserStore.getUsers()}
-   }
+    return {users: UserStore.getUsers()}
+  }
 
   componentDidMount() {
     UserStore.onChange(this.onStoreChange.bind(this))
