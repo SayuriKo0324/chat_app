@@ -61,4 +61,25 @@ export default {
       })
     })
   },
+
+  sendUser(followedId) {
+    return new Promise((resolve, reject) => {
+      request
+      .post(`${APIEndpoints.RELATIONSHIPS}/create`) // 後ほど説明します。
+      .set('X-CSRF-Token', CSRFToken()) // 後ほど説明します。
+      .send({followedId: followedId}) // これによりサーバ側に送りたいデータを送ることが出来ます。
+      .end((error, res) => {
+        if (!error && res.status === 200) {
+          const json = JSON.parse(res.text)
+          console.log(json)
+          Dispatcher.handleServerAction({
+            type: 'postUser',
+            json,
+          })
+        } else {
+          reject(res)
+        }
+      })
+    })
+  },
 }

@@ -16,4 +16,5 @@ const APIRoot = `${Root}/api`
 export const APIEndpoints = {
   MESSAGES: APIRoot + '/messages',
   USERS: APIRoot + '/users',
+  RELATIONSHIPS: APIRoot + '/relationships',
 }
