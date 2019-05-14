@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import UserStore from '../../stores/user'
+import UsersAction from '../../actions/users'
 // import Utils from '../../utils'
 
 export default class User extends React.Component {
@@ -35,11 +36,18 @@ export default class User extends React.Component {
     this.setState(this.getStateFromStore())
   }
 
+  handleClick(userId) {
+    UsersAction.sendUser(userId)
+    this.setState({
+      users: '',
+    })
+  }
+
   render() {
     const {users} = this.state
     const {searchString} = this.props
-    console.log(this.state)
-    console.log(this.props)
+    // console.log(this.state)
+    // console.log(this.props)
 
     let allUsers = users
     const searchUser = searchString
@@ -58,10 +66,10 @@ export default class User extends React.Component {
               <div key={user.id}>
                 <ul className='search_user_list'>
                   <li className='search_user_list_item'>
-                    <li className='search_user_list_result'>
-                      <img className='search_user_list_result_image' src='/assets/images/default_image.jpg' />;
-                      {user.name}
-                      </li>
+                    <li className='search_user_list_result' onClick={ () => { this.handleClick(user.id) }} >
+                    <img className='search_user_list_result_image' src={ user.profile_image } />;
+                    { user.name }
+                    </li>
                   </li>
                 </ul>
               </div>

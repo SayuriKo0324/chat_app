@@ -19,8 +19,8 @@ class UserList extends React.Component {
 
   getStateFromStore() {
     const allMessages = MessagesStore.getAllChats()
-
     const messageList = []
+
     _.each(allMessages, (message) => {
       const messagesLength = message.messages.length
       messageList.push({
@@ -91,7 +91,7 @@ class UserList extends React.Component {
           key={ message.user.id }
         >
           <div className='user-list__item__picture'>
-            <img src={ message.user.profilePicture } />
+            <img src={ message.user.profile_image } />
           </div>
           <div className='user-list__item__details'>
             <h4 className='user-list__item__name'>
