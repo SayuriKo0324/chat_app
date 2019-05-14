@@ -1,12 +1,11 @@
 class API::RelationshipsController < ApplicationController
-  before_action :logged_in_user
+  # before_action :logged_in_user
 
   def create
     users = JSON.parse(request.body.read)
-    @user = Relationship.new(followed_id: users["followedId"])
+    @user = User.find(users["followedId"])
     current_user.follow(@user)
     render json: @users
-    @user.save
   end
 
   def destroy

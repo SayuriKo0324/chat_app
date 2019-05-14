@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :users, :only => [:index]
     get '/users/search' => 'users#index'
     post '/users/search' => 'users#index'
+    post '/relationships' => 'relationships#create'
+    delete '/relationships/:id' => 'relationships#destroy'
   end
 
   resources :messages      # only[:create, :destroy] #
